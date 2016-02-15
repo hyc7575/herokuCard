@@ -1,0 +1,270 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.clearfix {
+	*zoom: 1;
+}
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#wrap {
+	margin-left: -310px;
+	margin-top: -350px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 620px;
+	height: 700px;
+}
+.list_header {
+	padding-bottom: 15px;
+}
+.main_tit {
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	font-size: 24px;
+	font-weight: 700;
+	color: #646464;
+}
+.main_tit + button {
+	float: right;
+	height: 30px;
+}
+.room_wrap {
+	overflow-y: scroll;
+	position: relative;
+	height: 600px;
+	border: 1px solid #e1e1e1;
+	box-sizing: border-box;
+}
+.room_wrap > table {
+	width: 100%;
+	text-align: center;
+}
+.room_wrap > table td,
+.room_wrap > table th {
+	height: 32px;
+	line-height: 32px;
+}
+.room_wrap > table td p {
+	width: 370px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.createArea {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -90px 0 0 -150px;
+	width: 300px;
+	height: 90px;
+	background-color: #eee;
+	z-index: 9999;
+}
+.createArea form {
+	height: 100%;
+}
+.createArea table {
+	width: 100%;
+	text-align: center;
+}
+.createArea table tr {
+	height: 60px;
+}
+.createArea table td {
+	vertical-align: middle;
+}
+.createArea_btn {
+}
+.createArea_btn div {
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+/* common input */
+.cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0;
+	filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+.wait .cover {
+	z-index: 999;
+}
+.play .cover {
+	z-index: -999;
+}
+.input-text {
+	margin: 0;
+	padding: 0 0 0 5px;
+	width: 180px;
+	height: 32px;
+	text-align: left;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+
+
+
+/* game page */
+#user_info {
+	position: absolute;
+	right: -350px;
+	width: 300px;
+	height: 150px;
+	background-color: #e1e1e1;
+}
+#user_info p {
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+#chat_wrap {
+	position: absolute;
+	top: 200px;
+	right: -350px;
+	width: 300px;
+	height: 250px;
+	padding: 10px;
+	background-color: #e0e0e0;
+	box-sizing: border-box;
+}
+.chat_show_area {
+	overflow-y: auto;
+	height: 210px;
+	border: 1px solid #000;
+}
+#interface:after {
+	content:'';
+	display: block;
+	clear: both;
+}
+#interface .start_btn {
+	float: left;
+	margin-left: 10px;
+	width: 100px;
+	height: 40px;
+	border: 1px solid blue;
+	background: orange;
+}
+#interface p {
+	float: left;
+	margin-left: 40px;
+	font-size: 20px;
+	line-height: 40px;
+}
+#interface #timer {
+	width: 140px;
+}
+#interface .on {
+	color: red;
+}
+.notice {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -30px 0 0 -120px;
+	width: 240px;
+	height: 60px;
+	line-height: 60px;
+	font-size: 12px;
+	font-weight: 700;
+	color: #05eaea;
+	background-color: #eee;
+	text-align: center;
+}
+.out_room {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	z-index: 9999999999;
+}
+.card {
+	position: relative;
+	float: left;
+	width: 80px;
+	height:91px;
+	margin:10px;
+	cursor: pointer;
+}
+.front,.back {
+	perspective: 600px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 80px;
+	height: 91px;
+}
+.show {
+	transition: all .5s ease-out;
+	transform: rotateY(0deg);
+}
+.closed {
+	-webkit-transition: all .5s ease-out;
+	transition: all .5s ease-out;
+	-webkit-transform: rotateY(-180deg);
+	transform: rotateY(-180deg);
+}
+.hidden {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+
+#footer {
+	margin: 0 auto;
+	width: 620px;
+}
+.wrong {
+	margin-left: 10px;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>대기실</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div id="wrap">
+		<div class="list_header clearfix">
+			<h1 class="main_tit">대기실</h1>
+			<button class="create_room">방만들기</button>
+		</div>
+		<div class="room_wrap">
+			<table id="room_list">
+				<colgroup>
+					<col style="width: 90px;">
+					<col style="width: 370px;">
+					<col style="width: 110px;">
+					<col style="width: 50px;">
+				</colgroup>
+				<thead>
+					<th>Num</th>
+					<th>제목</th>
+					<th>상태</th>
+					<th>Join!</th>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+			<div class="createArea">
+				<form action="/room/create" method="POST">
+					<table>
+						<colgroup>
+							<col style="width: 25%;">
+							<col style="width: 75%;">
+						</colgroup>
+						<tr>
+							<td><label for="name">제목</label></td>
+							<td><input class="input-text" type="text" id="name" name="name"></td>
+						</tr>
+					</table>
+					<div class="createArea_btn clearfix">
+						<div><input type="submit" value="만들기"></div>
+						<div><button type="button" id="closeCreateArea">닫기</button></div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="jquery/jquery-1.11.3.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		$('.create_room').on('click',function() {
+			$('.input-text').val('');
+			$('.createArea').show();
+		});
+		$('#closeCreateArea').on('click',function() {
+			$('.input-text').val('');
+			$('.createArea').hide();
+		});
+
+		var socket = io();
+		var saveData;
+		socket.emit('list show'); //db 값을 받아오는 list show 실행 후 test의 data로 넘겨 받는다.
+		/*setInterval(function() {
+			socket.emit('list show'); //db 값을 받아오는 list show 실행 후 test의 data로 넘겨 받는다.
+		},5000);*/
+		
+		socket.on('test',function(data) {
+			saveData = data;
+			var dataObj = {}
+			var $output = '';
+			for(var i = 0; i<data.length; i++) {
+				dataObj.id = Number(data[i].room_id);
+				dataObj.name = data[i].name;
+				dataObj.user_num = data[i].user_num;
+				if(dataObj.user_num !== 0) {
+					$output = "<tr><td id=room"+dataObj.id+">"+dataObj.id+'</td><td class="name_data"><p>'+dataObj.name+'</p></td><td>'+dataObj.user_num+"/2</td><td><a href=/card/"+dataObj.id+" class=join_btn>입장</a></td></tr>";
+					$('#room_list').find('tbody').append($output);
+				}
+			}
+			$('.join_btn').on('click',function() {
+				$this = $(this);
+				var roomname = Number($this.closest('tr').find('td').first().text());
+				socket.emit('join before',roomname);
+			});
+		});
+		socket.on('status change',function(data) {
+			$('#room'+data.id).siblings().eq(1).text(data.status+'/2');
+		});
+		socket.on('get',function(data) {
+			alert(data);
+		});
+	</script>
+</body>
+</html>

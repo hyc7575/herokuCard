@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>인덱스</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div id="wrap">
+		<div class="cover"></div>
+		<div id="user_info">
+			<p class="user1">
+				user1
+			</p>
+			<p class="user2">
+				user2
+			</p>
+		</div>
+		<div id="chat_wrap">
+			<div class="chat_show_area">
+				
+			</div>
+			<input type="text" class="chat_value">
+			<button type="button" class="send_btn">보내기</button>
+		</div>
+		<div id="interface">
+			<!-- <button class="start_btn" value="시작">시작</button> -->
+			<p id="timer">시간 </p>
+			<!-- <p class="wrong">실패 횟수 <span>0</span></p> -->
+			<a class="out_room" href="/">나가기</a>
+		</div>
+		<div class="card_wrap">
+			
+		</div>
+		<div class="notice start_notice">
+			<p class="ready_ment">잠시 후 시작됩니다. 순서를 정하기 위한 주사위를 굴려(?)주세요.</p>
+		</div>
+		<div class="notice dice_wrap">
+			<button>순서 정하기</button>
+		</div>
+	</div>
+	<script src="jquery/jquery-1.11.3.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
